@@ -21,7 +21,6 @@ jobs:
           rm -rf ./aws ./awscliv2.zip
       - name: push
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.PUSHUSER }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.PUSHSECRET }}
-          AWS_DEFAULT_REGION: us-west-2
-        run: export AWS_ACCESS_KEY AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION && make push 
+          BUILDER: ${{ secrets.BUILDER }}
+          BUILDERCRED: ${{ secrets.BUILDERCRED }}
+        run: make push
